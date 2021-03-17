@@ -1,12 +1,40 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class HornedBeasts extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            numberOfClicks: 0
+
+        };
+    }
+
+    likeImage = () => {
+        this.setState({ numberOfClicks: this.state.numberOfClicks + 1 });
+    }
+
+
     render() {
-        return(
-            <div id="beasts">
-                <h2>{this.props.title}</h2>
-                <p>{this.props.description}</p>
-                <img src={this.props.url} alt={this.props.alt} title={this.props.title}/>
+        return (
+            <div id="Horned Beasts">
+                <Card style={{ width: '18rem' }}>
+                    <Card.Body>
+                        <Card.Title>{this.props.title}</Card.Title>
+                        <Card.Text>
+                            {this.props.description}
+                        </Card.Text>
+                        <Card.Text>
+                            ❤️ {this.state.numberOfClicks}
+                        </Card.Text>
+                        <Card.Img
+                            onClick={this.likeImage}
+                            src={this.props.image}
+                            description={this.props.description}
+                            title={this.props.title} />
+                    </Card.Body>
+                </Card>
             </div>
         )
     }
