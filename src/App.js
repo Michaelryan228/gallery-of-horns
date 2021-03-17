@@ -3,6 +3,7 @@ import Header from './header';
 import Footer from './footer';
 import Main from './main';
 import './App.css';
+import './data.json';
 
 class App extends React.Component {
   render() {
