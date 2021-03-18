@@ -11,12 +11,16 @@ class HornedBeasts extends React.Component {
         };
     }
 
-    likeImage = () => {
-        this.setState({ numberOfClicks: this.state.numberOfClicks + 1 });
-    }
-
-
     render() {
+        const likeImage = () => {
+            this.setState({ numberOfClicks: this.state.numberOfClicks + 1 });
+            popOut(this.props.index);
+        }
+
+        const popOut = (index) => {
+            this.props.displayAsModal(index);
+        }
+
         return (
             <div id="Horned Beasts">
                 <Card style={{ width: '18rem' }}>
@@ -29,7 +33,7 @@ class HornedBeasts extends React.Component {
                             ❤️ {this.state.numberOfClicks}
                         </Card.Text>
                         <Card.Img
-                            onClick={this.likeImage}
+                            onClick={likeImage}
                             src={this.props.image}
                             description={this.props.description}
                             title={this.props.title} />
