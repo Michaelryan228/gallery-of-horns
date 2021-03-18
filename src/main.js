@@ -23,6 +23,10 @@ class Main extends React.Component {
                                 title={item.title}
                                 image={item.image_url}
                                 description={item.description}
+                                alt={item.keywords}
+                                horns={item.horns}
+                                displayAsModal = {this.props.displayAsModal}
+                                index={index}
                             />
                         </div>
                     ))}
