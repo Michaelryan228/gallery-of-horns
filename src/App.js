@@ -5,6 +5,8 @@ import Main from './main';
 import './App.css';
 import Data from './data.json';
 import SelectedBeast from './selectedbeast';
+import Dropdown from './form';
+
 
 class App extends React.Component {
   constructor(props){
@@ -13,6 +15,7 @@ class App extends React.Component {
       newData: Data,
       displayModal: false,
       favoriteBeast: {},
+      filteredData: null,
     }
   }
 
@@ -26,11 +29,29 @@ class App extends React.Component {
     this.setState({displayModal: false});
   }
 
+  handleInput = (e) => {this.setState({ filteredData: this.state.newData.filter(value => {
+    // console.log(e.target);
+    if (e.target === undefined) {
+      return false;
+    } else
+    {
+      if (e.target.outerText === 'all') {
+        return true;
+      } else {
+        return (Number(e.target.outerText) === Number(value.horns));
+      }
+    }
+    })});
+  };
+
   render() {
     return (
       <div className="App">
         <header>
         <Header />
+        <Dropdown
+          handleInput={this.handleInput}>
+        </Dropdown>
         <Main 
         cards={this.state.newData}
         displayAsModal={this.displayAsModal}
