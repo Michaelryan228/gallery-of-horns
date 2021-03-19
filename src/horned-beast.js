@@ -32,6 +32,9 @@ class HornedBeasts extends React.Component {
                         <Card.Text>
                             ❤️ {this.state.numberOfClicks}
                         </Card.Text>
+                        <Card.Text>
+                            Number of Horns: {this.props.horns}
+                        </Card.Text>
                         <Card.Img
                             onClick={likeImage}
                             src={this.props.image}
